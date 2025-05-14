@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Text to Speech </title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      text-align: center;
+      padding: 50px;
+      color: #333;
+    }
+
+    h1 {
+      color: #fff;
+      text-shadow: 2px 2px 4px #00000050;
+    }
+
+    textarea {
+      width: 60%;
+      padding: 15px;
+      border-radius: 10px;
+      border: 2px solid #ccc;
+      resize: none;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #ff6f61;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e55b50;
+    }
+
+    audio {
+      margin-top: 30px;
+    }
+
+    .telegram-btn {
+      display: inline-block;
+      margin-top: 40px;
+      background: linear-gradient(to right, #0088cc, #1c92d2);
+      color: white;
+      padding: 12px 24px;
+      font-size: 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: background 0.3s ease;
+    }
+
+    .telegram-btn:hover {
+      background: linear-gradient(to right, #007ab8, #187fb8);
+    }
+  </style>
+</head>
+<body>
+  <h1>Text to Speech Converter</h1>
+  <textarea id="textInput" rows="6" placeholder="Enter text here..."></textarea><br>
+  <button onclick="convertTextToSpeech()">Speak</button>
+  <br>
+  <audio id="audioPlayer" controls style="display:none;"></audio>
+
+  <!-- Telegram Channel Join Button -->
+  <a class="telegram-btn" href="https://t.me/PROFESSORXBOTMAKER" target="_blank">
+    Join Our Telegram Channel
+  </a>
+
+  <script>
+    function convertTextToSpeech() {
+      const text = document.getElementById("textInput").value;
+      if (!text) {
+        alert("Please enter some text.");
+        return;
+      }
+
+      const url = `https://text-to-speech.manzoor76b.workers.dev/?text=${encodeURIComponent(text)}`;
+
+      const audio = document.getElementById("audioPlayer");
+      audio.src = url;
+      audio.style.display = "block";
+      audio.play();
+    }
+  </script>
+</body>
+</html>
